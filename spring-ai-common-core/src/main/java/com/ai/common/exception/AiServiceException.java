@@ -1,6 +1,6 @@
 package com.ai.common.exception;
 
-import com.ai.common.ResultCode;
+import com.ai.common.result.ResultCode;
 
 public class AiServiceException extends BaseException {
     public AiServiceException(ResultCode resultCode, String message) {

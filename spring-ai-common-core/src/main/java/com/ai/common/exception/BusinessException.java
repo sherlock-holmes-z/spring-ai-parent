@@ -1,6 +1,6 @@
 package com.ai.common.exception;
 
-import com.ai.common.ResultCode;
+import com.ai.common.result.ResultCode;
 
 // 业务异常（最常用）
 public class BusinessException extends BaseException {

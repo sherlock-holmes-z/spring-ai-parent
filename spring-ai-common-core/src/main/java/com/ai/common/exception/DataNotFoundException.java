@@ -1,6 +1,6 @@
 package com.ai.common.exception;
 
-import com.ai.common.ResultCode;
+import com.ai.common.result.ResultCode;
 
 public class DataNotFoundException extends BaseException {
     public DataNotFoundException(String message) {

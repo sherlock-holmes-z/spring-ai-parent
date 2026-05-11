@@ -1,7 +1,7 @@
 package com.ai.common.exception;
 
-import com.ai.common.Result;
-import com.ai.common.ResultCode;
+import com.ai.common.result.Result;
+import com.ai.common.result.ResultCode;
 import feign.FeignException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
