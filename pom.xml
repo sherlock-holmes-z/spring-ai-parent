@@ -18,6 +18,7 @@
     <name>spring-ai-parent</name>
     <description>Parent project for Spring AI with Spring Cloud Alibaba</description>
     <modules>
+        <module>spring-ai-common-core</module>
         <module>spring-ai-demo</module>
     </modules>
 
