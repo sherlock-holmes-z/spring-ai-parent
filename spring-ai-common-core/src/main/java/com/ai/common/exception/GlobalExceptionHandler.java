@@ -2,7 +2,6 @@ package com.ai.common.exception;
 
 import com.ai.common.result.Result;
 import com.ai.common.result.ResultCode;
-import feign.FeignException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -65,15 +64,15 @@ public class GlobalExceptionHandler {
     }
 
     // 6. Feign 调用异常（服务间调用）
-    @ExceptionHandler(FeignException.class)
-    public Result<Void> handleFeignException(FeignException e, HttpServletRequest request) {
-        log.error("Feign 调用异常 | uri={} | status={} | message={}",
-                request.getRequestURI(), e.status(), e.getMessage());
-        if (e.status() == 404) {
-            return Result.fail(ResultCode.NOT_FOUND, "下游服务资源不存在");
-        }
-        return Result.fail(ResultCode.SERVICE_UNAVAILABLE, "下游服务调用失败");
-    }
+//    @ExceptionHandler(FeignException.class)
+//    public Result<Void> handleFeignException(FeignException e, HttpServletRequest request) {
+//        log.error("Feign 调用异常 | uri={} | status={} | message={}",
+//                request.getRequestURI(), e.status(), e.getMessage());
+//        if (e.status() == 404) {
+//            return Result.fail(ResultCode.NOT_FOUND, "下游服务资源不存在");
+//        }
+//        return Result.fail(ResultCode.SERVICE_UNAVAILABLE, "下游服务调用失败");
+//    }
 
     // 7. 兜底异常（必须放最后）
     @ExceptionHandler(Exception.class)
