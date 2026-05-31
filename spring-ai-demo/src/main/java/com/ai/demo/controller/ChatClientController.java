@@ -69,12 +69,11 @@ public class ChatClientController {
                 .maxTokens(1024)
                 .temperature(0.2)
                 .build();
-        Book entity = chatClient.prompt()
+        return chatClient.prompt()
                 .user("随机生产一本书的书名和作者,要求中文，作者名是个常规的中文名")
                 .options(chatOptions)
                 .call()
                 .entity(Book.class);
-        return entity;
     }
 
     @GetMapping("/flux")
@@ -85,7 +84,7 @@ public class ChatClientController {
                 .temperature(0.2)
                 .build();
         return chatClient.prompt()
-                .user("请生成一个10个单词的英文句子")
+                .user("请生成一个10个单词的英文句子,并给出中文解释")
                 .options(chatOptions)
                 .stream()
                 .content();
