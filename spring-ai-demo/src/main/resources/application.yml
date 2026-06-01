@@ -10,4 +10,4 @@ spring:
       base-url: https://open.bigmodel.cn/api/paas
       chat:
         options:
-          model: glm-5.1
+          model: glm-4.5-air
