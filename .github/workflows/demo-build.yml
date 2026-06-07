@@ -3,8 +3,18 @@ name: Build and Deploy
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'spring-ai-demo/**'
+      - 'spring-ai-common-core/**'
+      - '.github/workflows/demo-build.yml'
+      - 'pom.xml'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'spring-ai-demo/**'
+      - 'spring-ai-common-core/**'
+      - '.github/workflows/demo-build.yml'
+      - 'pom.xml'
 
 jobs:
   build:
@@ -31,9 +41,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd spring-ai-demo
           docker build -t crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:latest \
-                      -t crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:${{ github.sha }} .
+                      -t crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:${{ github.sha }} \
+                      -f spring-ai-demo/Dockerfile \
+                      spring-ai-demo
 
       - name: Push Docker image
         run: |
