@@ -2,10 +2,7 @@ version: '3.8'
 
 services:
   spring-ai-demo:
-    build:
-      context: .
-      dockerfile: spring-ai-demo/Dockerfile
-    image: crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:latest
+    image: crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai_demo:latest
     container_name: spring-ai-demo
     ports:
       - "8081:8081"
@@ -14,25 +11,11 @@ services:
       - JAVA_OPTS=-XX:+UseContainerSupport -XX:MaxRAMPercentage=70.0 -Xms512m -Xmx1024m
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-prod}
     volumes:
-      - ./logs:/app/logs
+      - ./logs/demo:/app/logs
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
     networks:
       - spring-ai-network
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 1G
-        reservations:
-          cpus: '0.5'
-          memory: 512M
 
 networks:
   spring-ai-network:
