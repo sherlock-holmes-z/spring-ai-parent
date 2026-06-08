@@ -41,12 +41,12 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:latest \
-                      -t crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:${{ github.sha }} \
+          docker build -t crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai_demo:latest \
+                      -t crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai_demo:${{ github.sha }} \
                       -f spring-ai-demo/Dockerfile \
                       spring-ai-demo
 
       - name: Push Docker image
         run: |
-          docker push crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:latest
-          docker push crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai:${{ github.sha }}
+          docker push crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai_demo:latest
+          docker push crpi-dl21g96s4xe8z204.cn-shanghai.personal.cr.aliyuncs.com/xiguapi0901/spring_ai_demo:${{ github.sha }}
