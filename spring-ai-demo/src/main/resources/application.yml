@@ -6,8 +6,8 @@ spring:
     name: spring-ai-demo
   ai:
     zhipuai:
-      api-key: ${ZHIPU_KEY}
+      api-key: ${ZHIPU_KEY:default_key}
       base-url: https://open.bigmodel.cn/api/paas
       chat:
         options:
-          model: glm-4.5-air
+          model:  ${AI_MODEL:glm-4-flash}
