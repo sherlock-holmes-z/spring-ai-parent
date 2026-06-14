@@ -9,14 +9,14 @@
 
     <!-- 文件输出：按天 + 按大小滚动 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/app.log</file>
+        <file>logs/demo.log</file>
 
         <!-- 滚动策略：同时按天和按大小滚动 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- 单个文件最大 100MB -->
             <maxFileSize>100MB</maxFileSize>
             <!-- 归档文件命名：按天滚动 -->
-            <fileNamePattern>logs/app-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>logs/demo-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- 保留最近 30 天 -->
             <maxHistory>30</maxHistory>
             <!-- 总大小上限 5GB -->
@@ -25,7 +25,7 @@
 
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-            <charset>UTF-8</charset>acc
+            <charset>UTF-8</charset>
         </encoder>
     </appender>
 
