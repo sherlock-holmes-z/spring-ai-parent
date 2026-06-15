@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: spring-ai-demo
-  # 显式指定日志配置文件
   logging:
     config: classpath:logback-spring.xml
   ai:

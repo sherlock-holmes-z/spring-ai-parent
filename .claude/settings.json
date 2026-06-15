@@ -1,57 +1,27 @@
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "description": "拦截危险命令",
-        "matcher": "Bash",
-        "hooks": [{
-          "type": "command",
-          "command": "if echo \"${COMMAND}\" | grep -qE 'rm -rf /|git push --force|git push -f|git reset --hard|git clean -f|git branch -D main|git branch -D master'; then echo '❌ 危险命令已拦截'; exit 1; fi"
-        }]
-      }
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Bash(npm *)",
+      "Bash(git *)",
+      "Bash(node *)"
     ],
+    "deny": [
+      "Bash(rm -rf *)"
+    ]
+  },
+  "autoCompactThreshold": 80,
+  "hooks": {
     "PostToolUse": [
       {
-        "description": "编辑 Java 后格式化+编译",
-        "matcher": "Edit",
-        "hooks": [{
-          "type": "command",
-          "command": "if echo \"${FILE_PATH}\" | grep -q '\\.java$'; then echo '🎨 格式化+编译...'; cd D:/code/java/spring-ai-parent && mvn spotless:apply compile -pl spring-ai-demo -q 2>&1 | tail -15; fi"
-        }]
-      },
-      {
-        "description": "编辑 pom.xml 后 validate",
-        "matcher": "Edit",
-        "hooks": [{
-          "type": "command",
-          "command": "if echo \"${FILE_PATH}\" | grep -q 'pom\\.xml$'; then echo '📋 validate POM...'; cd D:/code/java/spring-ai-parent && mvn validate -q 2>&1 | tail -10; fi"
-        }]
-      },
-      {
-        "description": "编辑测试文件后自动运行测试",
-        "matcher": "Edit",
-        "hooks": [{
-          "type": "command",
-          "command": "if echo \"${FILE_PATH}\" | grep -q 'src/test/.*\\.java$'; then echo '🧪 运行单测...'; test_file=\"${FILE_PATH}\"; class_name=$(basename \"$test_file\" .java); cd D:/code/java/spring-ai-parent && mvn test -pl spring-ai-demo -Dtest=\"$class_name\" -q 2>&1 | tail -20; fi"
-        }]
-      }
-    ],
-    "Stop": [
-      {
-        "description": "对话结束时展示 git diff",
-        "hooks": [{
-          "type": "command",
-          "command": "cd D:/code/java/spring-ai-parent && echo '=== Git Diff ===' && git diff --stat && echo '' && echo '=== Staged ===' && git diff --cached --stat"
-        }]
-      }
-    ],
-    "Notification": [
-      {
-        "description": "任务完成桌面通知",
-        "hooks": [{
-          "type": "command",
-          "command": "powershell -Command \"Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Claude Code 任务完成','✅ Done','OK','Information')\""
-        }]
+        "matcher": "Write(.claude/settings.json)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'settings.json 已修改，请手动更新 settings.md 以保持一致'"
+          }
+        ]
       }
     ]
   }
