@@ -9,6 +9,7 @@ import org.springframework.ai.chat.prompt.*;
 import org.springframework.ai.zhipuai.ZhiPuAiChatModel;
 import org.springframework.ai.zhipuai.ZhiPuAiChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -17,6 +18,7 @@ import reactor.core.publisher.Flux;
 import java.io.IOException;
 
 @RestController
+@RequestMapping("/chatModelController")
 @AllArgsConstructor
 public class ChatModelController {
 

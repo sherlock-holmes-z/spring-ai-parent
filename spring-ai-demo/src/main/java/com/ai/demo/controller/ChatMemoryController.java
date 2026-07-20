@@ -19,7 +19,7 @@ public class ChatMemoryController {
 
     private final ChatClient chatClient;
 
-    // 创建一个自动上下文Advisor,MessageWindowChatMemory使用内存记忆
+    // 创建一个自动上下文Advisor,MessageWindowChatMemory使用内存记忆(生产不适用)
     static MessageWindowChatMemory chatMemory = MessageWindowChatMemory.builder().maxMessages(100).build();
     static MessageChatMemoryAdvisor chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
 
